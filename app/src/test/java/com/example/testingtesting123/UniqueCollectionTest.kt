@@ -15,6 +15,18 @@ class UniqueCollectionTest {
     }
 
     @Test
+    fun getAnItem(){
+        val item1 = Item("Item1")
+        val item2 = Item("Item2")
+        val item3 = Item("Item3")
+        collection.addItem(item1)
+        collection.addItem(item2)
+        collection.addItem(item3)
+
+        assert(collection.get(0).equals(item1) && collection.get(1).equals(item2) && collection.get(2).equals(item3))
+    }
+
+    @Test
     fun addAnItem() {
         collection.addItem(Item("Item1"))
         val item = collection.get(0)
