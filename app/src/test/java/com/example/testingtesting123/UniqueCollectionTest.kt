@@ -39,11 +39,17 @@ class UniqueCollectionTest {
         collection.addItem(item2)
         collection.addItem(item3)
 
-        val originalNum = collection.size()
+        var originalNum = collection.size()
         collection.remove(item2)
-        val newNum = collection.size()
-        assert(originalNum == 3 && newNum == 2) {"Original: ${originalNum} New: ${newNum}"}
+        var newNum = collection.size()
+        assert(originalNum == 3 && newNum == 2) {"Original: ${originalNum}(expected 3) New: ${newNum}(expected 2)"}
         assert(collection.get(0).equals(item1) && collection.get(1).equals(item3)) {"Wrong values in items"}
+
+        originalNum = collection.size()
+        collection.remove(item1)
+        newNum = collection.size()
+        assert(originalNum == 2 && newNum == 1) {"Original: ${originalNum}(expected 2) New: ${newNum}(expected 1)"}
+        assert(collection.get(0).equals(item3)) {"Wrong values in items"}
     }
 
     @Test
